@@ -1,0 +1,26 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Data folders (ignored for privacy and size)
+data/
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment files
+.env
+*.env
+venv/
+.env.*
+
+# OS-generated files
+.DS_Store
+
+# Logs
+*.log
+
+# MLflow artifacts
+mlruns/
+
+
