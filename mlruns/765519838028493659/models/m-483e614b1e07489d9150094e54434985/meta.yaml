@@ -1,0 +1,10 @@
+artifact_location: file:///Users/tagesehandiso/credit_risk_model_bati_bank/mlruns/765519838028493659/models/m-483e614b1e07489d9150094e54434985/artifacts
+creation_timestamp: 1751437602958
+experiment_id: '765519838028493659'
+last_updated_timestamp: 1751437605242
+model_id: m-483e614b1e07489d9150094e54434985
+model_type: null
+name: logistic_regression_model
+source_run_id: 39c44676aca744139d7d7aa70d2a4ee6
+status: 2
+status_message: null
