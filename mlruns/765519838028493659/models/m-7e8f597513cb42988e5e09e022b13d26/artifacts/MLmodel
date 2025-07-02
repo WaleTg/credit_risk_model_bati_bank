@@ -1,0 +1,22 @@
+artifact_path: file:///Users/tagesehandiso/credit_risk_model_bati_bank/mlruns/765519838028493659/models/m-7e8f597513cb42988e5e09e022b13d26/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.10.12
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.6.1
+mlflow_version: 3.1.1
+model_id: m-7e8f597513cb42988e5e09e022b13d26
+model_size_bytes: 994
+model_uuid: m-7e8f597513cb42988e5e09e022b13d26
+prompts: null
+run_id: 2d48f86323334e54a2d317e649d53119
+utc_time_created: '2025-07-02 07:21:06.109545'

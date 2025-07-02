@@ -13,3 +13,7 @@ black
 pytest
 xverse
 woe
+fastapi
+uvicorn
+flake8
+black

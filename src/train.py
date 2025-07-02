@@ -50,7 +50,6 @@ def main():
     if missing_cols:
         raise ValueError(f"Missing required columns in dataset: {missing_cols}")
 
-    # Drop non-numeric or identifier columns that cause errors
     non_feature_cols = [
         "CustomerId", "is_high_risk",
         "TransactionId", "BatchId", "AccountId", "SubscriptionId",
@@ -59,20 +58,18 @@ def main():
         "PricingStrategy", "FraudResult"
     ]
 
-    # Keep only columns that exist (some might not be present)
     non_feature_cols = [col for col in non_feature_cols if col in df.columns]
 
     feature_cols = [
-    "total_amount", "avg_amount", "transaction_count", "std_amount",
-    "hour_median", "day_median", "month_median", "year_median"
-                                                                ]
-    X = df[feature_cols]
+        "total_amount", "avg_amount", "transaction_count", "std_amount",
+        "hour_median", "day_median", "month_median", "year_median"
+    ]
 
+    X = df[feature_cols]
     y = df["is_high_risk"]
 
     logger.info(f"Features shape: {X.shape}, Target shape: {y.shape}")
 
-    # Train/test split with stratification for balanced classes
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42, stratify=y
     )
@@ -82,18 +79,19 @@ def main():
 
     with mlflow.start_run(run_name="LogisticRegression") as run_lr:
         logger.info("[INFO] Training Logistic Regression...")
-        #lr = LogisticRegression(max_iter=1000, random_state=42)
         lr = LogisticRegression(class_weight="balanced", max_iter=1000)
-
         lr.fit(X_train, y_train)
 
         metrics = evaluate_model(lr, X_test, y_test)
-        mlflow.sklearn.log_model(lr, "logistic_regression_model")
+        mlflow.sklearn.log_model(
+            lr,
+            artifact_path="logistic_regression_model",
+            registered_model_name="credit_logreg_model"
+        )
         mlflow.log_metrics(metrics)
 
     with mlflow.start_run(run_name="RandomForest") as run_rf:
         logger.info("[INFO] Training Random Forest with Grid Search...")
-        #rf = RandomForestClassifier(random_state=42)
         rf = RandomForestClassifier(class_weight="balanced", random_state=42)
 
         param_grid = {
@@ -110,8 +108,11 @@ def main():
         logger.info(f"Best RF params: {grid_search.best_params_}")
 
         metrics_rf = evaluate_model(best_rf, X_test, y_test)
-
-        mlflow.sklearn.log_model(best_rf, "random_forest_model")
+        mlflow.sklearn.log_model(
+            best_rf,
+            artifact_path="random_forest_model",
+            registered_model_name="credit_risk_model"
+        )
         mlflow.log_params(grid_search.best_params_)
         mlflow.log_metrics(metrics_rf)
 
