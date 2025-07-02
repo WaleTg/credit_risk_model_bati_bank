@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/tagesehandiso/credit_risk_model_bati_bank/mlruns/765519838028493659/5f24a4f5671e4f0da97a24ee88c57646/artifacts
+end_time: 1751376692681
+entry_point_name: ''
+experiment_id: '765519838028493659'
+lifecycle_stage: active
+run_id: 5f24a4f5671e4f0da97a24ee88c57646
+run_name: LogisticRegression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1751376692317
+status: 4
+tags: []
+user_id: tagesehandiso

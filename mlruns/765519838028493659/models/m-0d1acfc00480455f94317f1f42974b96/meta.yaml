@@ -1,0 +1,10 @@
+artifact_location: file:///Users/tagesehandiso/credit_risk_model_bati_bank/mlruns/765519838028493659/models/m-0d1acfc00480455f94317f1f42974b96/artifacts
+creation_timestamp: 1751381799360
+experiment_id: '765519838028493659'
+last_updated_timestamp: 1751381801484
+model_id: m-0d1acfc00480455f94317f1f42974b96
+model_type: null
+name: random_forest_model
+source_run_id: a3fe7443a13141369dcb864253b1befd
+status: 2
+status_message: null
